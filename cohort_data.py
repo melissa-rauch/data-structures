@@ -54,15 +54,23 @@ def students_by_cohort(filename, cohort='All'):
     Return:
       - list[list]: a list of lists
     """
-
-
-
-
+    #create list of houses
+    #open file and name cohort file
     students = []
+    cohort_data = open("cohort_data.txt")
+    for line in cohort_data:
+      #assign variable names to index AND parse list at |
+      first, last, _, _, cohort_name = line.rstrip().split("|")
+      if cohort_name not in ("I", "G") and cohort in ("All", cohort_name):
+        students.append(f"{first} {last}")
+    return sorted(students)
+
+
+
 
     # TODO: replace this with your code
 
-    return sorted(students)
+    # return sorted(students)
 
 
 def all_names_by_house(filename):
@@ -193,7 +201,7 @@ def get_housemates_for(filename, name):
 
 ##############################################################################
 # END OF MAIN EXERCISE.  Yay!  You did it! You Rock!
-#
+
 
 # if __name__ == '__main__':
 #     import doctest
