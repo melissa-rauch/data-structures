@@ -14,8 +14,13 @@ def all_houses(filename):
     Return:
       - set[str]: a set of strings
     """
-
     houses = set()
+    cohort_data = open("cohort_data.txt")
+    
+    for line in cohort_data:
+      house = line.rstrip().split("|")[2]
+      if house:
+        houses.add(house)
 
     # TODO: replace this with your code
 
@@ -49,6 +54,9 @@ def students_by_cohort(filename, cohort='All'):
     Return:
       - list[list]: a list of lists
     """
+
+
+
 
     students = []
 
@@ -187,14 +195,14 @@ def get_housemates_for(filename, name):
 # END OF MAIN EXERCISE.  Yay!  You did it! You Rock!
 #
 
-if __name__ == '__main__':
-    import doctest
+# if __name__ == '__main__':
+#     import doctest
 
-    result = doctest.testfile('doctests.py',
-                              report=False,
-                              optionflags=(
-                                  doctest.REPORT_ONLY_FIRST_FAILURE
-                              ))
-    doctest.master.summarize(1)
-    if result.failed == 0:
-        print('ALL TESTS PASSED')
+#     result = doctest.testfile('doctests.py',
+#                               report=False,
+#                               optionflags=(
+#                                   doctest.REPORT_ONLY_FIRST_FAILURE
+#                               ))
+#     doctest.master.summarize(1)
+#     if result.failed == 0:
+#         print('ALL TESTS PASSED')
