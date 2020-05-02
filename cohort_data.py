@@ -65,9 +65,6 @@ def students_by_cohort(filename, cohort='All'):
         students.append(f"{first} {last}")
     return sorted(students)
 
-
-
-
     # TODO: replace this with your code
 
     # return sorted(students)
@@ -112,10 +109,35 @@ def all_names_by_house(filename):
     ghosts = []
     instructors = []
 
-    # TODO: replace this with your code
+    cohort_data = open("cohort_data.txt")
+    for line in cohort_data:
+      #assign variable names to index AND parse list at |
+      first, last, house, _, cohort_name = line.rstrip().split("|")
+      full_name = f"{first} {last}"
+      if house:
+        if house == "Dumbledore's Army":
+          dumbledores_army.append(full_name)
+        elif house == "Gryffindor":
+          gryffindor.append(full_name)
+        elif house == "Hufflepuff":
+          hufflepuff.append(full_name)
+        elif house == "Ravenclaw":
+          ravenclaw.append(full_name)
+        elif house == "Slytherin":
+          slytherin.append(full_name)
 
-    return []
+      else:
+        if cohort_name == "G":
+          ghosts.append(full_name)
+        elif cohort_name == "I":
+          instructors.append(full_name)
 
+    
+
+    return [sorted(dumbledores_army), sorted(gryffindor), sorted(hufflepuff), 
+    sorted(ravenclaw), sorted(slytherin), sorted(ghosts), sorted(instructors)]
+
+# all_names_by_house(("cohort_data.txt"))
 
 def all_data(filename):
     """Return all the data in a file.
@@ -203,14 +225,14 @@ def get_housemates_for(filename, name):
 # END OF MAIN EXERCISE.  Yay!  You did it! You Rock!
 
 
-# if __name__ == '__main__':
-#     import doctest
+if __name__ == '__main__':
+    import doctest
 
-#     result = doctest.testfile('doctests.py',
-#                               report=False,
-#                               optionflags=(
-#                                   doctest.REPORT_ONLY_FIRST_FAILURE
-#                               ))
-#     doctest.master.summarize(1)
-#     if result.failed == 0:
-#         print('ALL TESTS PASSED')
+    result = doctest.testfile('doctests.py',
+                              report=False,
+                              optionflags=(
+                                  doctest.REPORT_ONLY_FIRST_FAILURE
+                              ))
+    doctest.master.summarize(1)
+    if result.failed == 0:
+        print('ALL TESTS PASSED')
